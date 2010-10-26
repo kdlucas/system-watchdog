@@ -1,0 +1,16 @@
+testbeds:
+  default:
+    [
+     superman: IBM_NetVista,
+     king: Dell_T600,
+    ]
+
+site:
+    [
+     captian: Graph updated each hour,
+     homedir: /var/tmp/systemhealth,
+     privkey: /home/kdlucas/.ssh/id_rsa,
+     rundir: /var/tmp/systemhealth,
+     urlhome: 'file:///var/tmp/systemhealth/',
+    ]
+
