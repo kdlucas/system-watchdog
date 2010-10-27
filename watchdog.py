@@ -764,18 +764,35 @@ class Monitor(object):
     f.write('<TR><TH>Hostname<TH>Status<TH>Labels<TH>Last Update')
     f.write('<TH>Release<TH>Health</TR>')
     for h in sorted_hosts:
-      if TB.hosts[h.hostname]['status']:
-        status = 'Ready'
-        bgcolor = '#FFFFFF'
-      else:
-        status = 'Down'
-        bgcolor = '#FF9999'
       link_dir = 'hosts/' + h.hostname + '/rrd'
       rrd_dir = os.path.join(TB.home, 'hosts', h.hostname, 'rrd')
+      downfile = os.path.join(rrd_dir, 'downtime')
       hlink = os.path.join(link_dir, 'hwinfo.html')
       if not os.path.isdir(rrd_dir):
         os.makedirs(rrd_dir)
         os.chmod(rrd_dir, 0755)
+      if TB.hosts[h.hostname]['status']:
+        if os.path.isfile(downfile):
+          try:
+            os.remove(downfile)
+          except OSError, e:
+            TB.logger.error('Error deleting %s\n%s', downfile, e)
+        status = 'Ready'
+        bgcolor = '#FFFFFF'
+      else:
+        if os.path.isfile(downfile):
+          status = 'Down'
+          bgcolor = '#FF9999'
+          df = open(downfile, 'r')
+          TB.hosts[h.hostname]['time'] = df.read()
+          df.close()
+        else:
+          status = 'Unknown'
+          bgcolor = '#E8E8E8'
+          df = open(downfile, 'w')
+          df.write(TB.hosts[h.hostname]['time'])
+          df.close()
+
       f.write('<tr bgcolor=%s><th>' % bgcolor)
       f.write('<a href="%s">%s</a></th>' % (hlink, h.hostname))
       f.write('<td><em>%s</em>' % status)
