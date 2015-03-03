@@ -1,0 +1,74 @@
+/* "Watchdog" CSS theme by Kelly Lucas for landing page.*/
+
+table {
+  border-collapse: collapse;
+  border: 2px solid #333333;
+  font: 80% tahoma, verdana, arial, helvetica, sans-serif;
+  color: #003366;
+  background: #fffff0;
+  }
+
+table a {
+  color: #3399FF;
+  text-decoration: none;
+  }
+
+caption {
+  text-align: left;
+  text-transform: uppercase;
+  padding-bottom: 0 .4em .4em;
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+  background: transparent;
+  }
+
+thead th, tfoot th {
+  border: 1px solid #333;
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  color: #444;
+  background: #dbd9c0;
+  }
+
+tbody {border-bottom: 1px solid #EAECEE;}
+
+tbody td a {
+  background: transparent;
+  color: #72724c;
+  text-decoration: none;
+  border-bottom: 1px dotted #cc9;
+  }
+
+tbody  tr:hover {background: #DED9DA;}
+
+tbody td, tbody th {
+  font-size: 85%;
+  padding: 5px 10px;
+  border: 1px solid;
+  }
+
+tbody td + td + td + td a { background: transparent url(graph.png) no-repeat scroll 0 50%;
+      display: block;
+      height: 32px;
+      width: 32px;
+      overflow: hidden;
+      text-decoration: none;
+      text-indent: -5000px;
+      border: none;
+      margin: auto;
+      }
+
+tbody td + td + td + td a:hover { background: transparent url(graph.png) no-repeat scroll 0 50%;
+      display: block;
+      height: 32px;
+      width: 32px;
+      overflow: hidden;
+      text-decoration: none;
+      text-indent: -5000px;
+      border: none;
+      margin: auto;
+      }
+
+tfoot td, table tfoot th, table tfoot tr {text-align: left; font: 120%  "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; text-transform: uppercase; background: #fff; padding: 10px;}
